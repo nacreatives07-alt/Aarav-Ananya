@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4a101f">
+<title>Aarav & Ananya — Wedding Invitation</title>
+<style>
+:root{
+  --burgundy:#651126; --burgundy2:#3e0b18; --rose:#a94764;
+  --ivory:#fff8ef; --paper:#f7eadf; --gold:#b1843d; --gold2:#d5b26a;
+  --ink:#43252a; --soft:#ead0d0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#1d0810;color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+button,a{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none}
+#app{width:100%;min-height:100vh;overflow:hidden}
+.screen{min-height:100svh;position:relative;overflow:hidden}
+.paper{
+ background:
+ radial-gradient(circle at 20% 15%,rgba(255,255,255,.8),transparent 25%),
+ radial-gradient(circle at 80% 85%,rgba(184,125,102,.10),transparent 30%),
+ linear-gradient(135deg,#fffaf2,#f4e5d9 55%,#fff7ef);
+}
+.paper:after{
+ content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;
+ background:repeating-linear-gradient(0deg,rgba(100,50,30,.06) 0 1px,transparent 1px 5px);
+ mix-blend-mode:multiply;
+}
+.frame{position:absolute;inset:16px;border:1px solid rgba(177,132,61,.75);pointer-events:none;z-index:2}
+.frame:after{content:"";position:absolute;inset:7px;border:1px solid rgba(177,132,61,.30)}
+.orn{position:absolute;color:var(--gold);font-size:54px;line-height:1;z-index:3;opacity:.9}
+.orn.tl{top:25px;left:23px}.orn.tr{top:25px;right:23px;transform:scaleX(-1)}
+.orn.bl{bottom:25px;left:23px;transform:scaleY(-1)}.orn.br{bottom:25px;right:23px;transform:scale(-1)}
+.gold{color:var(--gold)}
+.script{font-family:"Brush Script MT","Segoe Script",cursive;font-weight:400}
+.upper{font-family:Arial,sans-serif;font-size:9px;letter-spacing:3px;font-weight:700}
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+/* INTRO */
+#intro{display:grid;place-items:center;padding:18px;background:
+ radial-gradient(circle at 50% 10%,#7e3448,#4b1324 62%,#300a17)}
+#intro .intro-card{
+ width:min(100%,520px);min-height:calc(100svh - 36px);padding:54px 34px 42px;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+ position:relative;isolation:isolate;
+ background:linear-gradient(145deg,#fffaf3,#f4e4d9);
+ box-shadow:0 30px 80px rgba(0,0,0,.34);
+ border:1px solid rgba(210,181,126,.8);
+ transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .7s ease;
+}
+.intro-card:before{content:"";position:absolute;inset:8px;border:1px solid rgba(177,132,61,.45);z-index:-1}
+.ganesha{font-size:66px;line-height:1;color:var(--gold);margin-bottom:12px}
+.mantra{color:var(--burgundy);margin-bottom:25px}
+.family{font-size:18px;line-height:1.25;color:#4c292e}
+.family.small{font-size:16px}
+.parent-label{font-size:10px;letter-spacing:3px;color:#85605d;margin:18px 0 6px}
+.request{font-size:16px;line-height:1.35;margin:24px 0 8px}
+.intro-names{font-size:64px;line-height:.76;color:var(--burgundy);margin:17px 0}
+.intro-names .with{display:block;font-size:28px;color:var(--gold);margin:18px 0}
+.open-btn{
+ margin-top:22px;padding:14px 28px;border-radius:30px;border:1px solid var(--gold);
+ background:var(--burgundy);color:#fff;font-family:Arial,sans-serif;font-size:9px;
+ font-weight:700;letter-spacing:2px;box-shadow:0 10px 26px rgba(101,17,38,.25);
+ transition:transform .2s ease,box-shadow .2s ease;
+}
+.open-btn:active{transform:scale(.97)}
+.intro-card.opening{transform:scale(1.05);opacity:0}
+
+/* MAIN */
+#main{display:none;background:#f6dfe2}
+#main.show{display:block}
+.music{
+ position:fixed;right:15px;top:15px;z-index:50;width:44px;height:44px;border-radius:50%;
+ border:1px solid #c9a56d;background:rgba(255,250,244,.96);color:var(--burgundy);
+ box-shadow:0 8px 25px rgba(0,0,0,.16)
+}
+
+/* HERO / COUNTDOWN */
+.hero{
+ min-height:100svh;padding:70px 24px 80px;display:flex;align-items:center;justify-content:center;
+ text-align:center;color:#fff;position:relative;background:
+ radial-gradient(circle at 50% 22%,rgba(187,115,130,.6),transparent 38%),
+ linear-gradient(160deg,#7e3047,#4b1426 55%,#300b18);
+}
+.hero:before{content:"";position:absolute;inset:17px;border:1px solid rgba(255,245,225,.55)}
+.hero-inner{position:relative;z-index:2;width:min(100%,520px)}
+.hero .upper{color:#ead7bf}
+.hero h1{font-size:80px;line-height:.74;margin:23px 0 18px;color:#f4d0d4;text-shadow:0 5px 25px #1d0610aa}
+.hero h1 small{display:block;font:italic 28px Georgia;margin:20px 0;color:var(--gold2)}
+.hero-copy{font-size:17px;line-height:1.45;color:#f7e7d6}
+.count-title{margin:36px 0 13px;font-family:Arial,sans-serif;font-size:8px;letter-spacing:2.4px;color:#e8d1ae}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);max-width:440px;margin:auto;border-top:1px solid #fff4;border-bottom:1px solid #fff4;padding:15px 0}
+.countdown>div{border-right:1px solid #fff3}.countdown>div:last-child{border:0}
+.countdown strong{display:block;font:600 32px Georgia;color:#fffaf0}
+.countdown span{display:block;font:700 7px Arial,sans-serif;letter-spacing:1.1px;color:#e8d1ae;margin-top:5px}
+.count-date{font:700 8px Arial,sans-serif;letter-spacing:1.1px;color:#f1ddc4;margin-top:14px}
+.scroll-cue{margin-top:34px;font:700 8px Arial,sans-serif;letter-spacing:3px;color:#ead6c0;animation:breathe 2s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.45;transform:translateY(4px)}}
+
+/* SCRATCH */
+.section{padding:82px 24px;text-align:center;position:relative}
+.section-title{font-size:55px;color:var(--burgundy);margin:6px 0 8px}
+.rule{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--gold);margin:10px 0 28px}
+.rule:before,.rule:after{content:"";height:1px;width:62px;background:rgba(177,132,61,.55)}
+.scratch-section{background:linear-gradient(#f8e6e8,#efd5da)}
+.scratch-wrap{width:min(88vw,350px);height:min(88vw,350px);margin:0 auto;position:relative;filter:drop-shadow(0 18px 28px rgba(82,15,35,.18))}
+.heart-under{
+ position:absolute;inset:4%;clip-path:path("M 50 92 C 12 63 0 42 0 25 C 0 6 15 0 28 0 C 40 0 48 8 50 15 C 52 8 60 0 72 0 C 85 0 100 6 100 25 C 100 42 88 63 50 92 Z");
+ /* fallback shape below */
+ background:radial-gradient(circle at 35% 25%,#fff,#f3ddd5 72%);border:1px solid #b1843d;
+}
+.heart-under{clip-path:none;border-radius:50% 50% 46% 46%;transform:rotate(-45deg) scale(.72);width:70%;height:70%;left:15%;top:13%}
+.heart-under:before,.heart-under:after{content:"";position:absolute;background:inherit;border-radius:50%;width:70%;height:70%}
+.heart-under:before{top:-35%;left:0}.heart-under:after{left:35%;top:0}
+.heart-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.heart-content .script{font-size:43px;line-height:.72;color:var(--burgundy)}
+.heart-content .mini{font:700 8px Arial,sans-serif;letter-spacing:.8px;color:var(--burgundy);margin-top:18px}
+#scratchCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:5;touch-action:none}
+.scratch-status{min-height:30px;font-size:16px;color:var(--burgundy);margin-top:15px}
+.scratch-hint{font:700 8px Arial,sans-serif;letter-spacing:1.7px;color:#8b6a6e;margin-top:3px}
+.skip-scratch{margin-top:18px;display:inline-block;color:var(--burgundy);font:700 9px Arial,sans-serif;letter-spacing:1px;border-bottom:1px solid #b1843d;padding-bottom:3px}
+
+/* INVITATION CARD */
+.card-section{padding:80px 27px;background:#fff4e9}
+.card-section .card-content{position:relative;z-index:3;max-width:520px;margin:auto;text-align:center}
+.card-ganesha{font-size:64px;color:var(--gold);margin-bottom:5px}
+.card-mantra{font:700 10px Arial,sans-serif;letter-spacing:1.7px;color:var(--burgundy)}
+.card-heading{font-size:25px;line-height:1.18;color:#432229;margin:28px 0 0}
+.card-label{font:700 10px Arial,sans-serif;letter-spacing:2.5px;margin-top:22px;color:#7d5c5b}
+.card-parents{font-size:19px;line-height:1.25}
+.card-request{font-size:18px;line-height:1.3;margin:25px 0}
+.card-names{font:600 62px Georgia;color:var(--burgundy);line-height:.82;margin:25px 0}
+.card-names .with{font:400 36px "Brush Script MT","Segoe Script",cursive;color:var(--gold);margin:12px 8px;display:inline-block}
+
+/* EVENTS */
+.events{background:#f6e3df}
+.event{padding:28px 2px;border-top:1px solid rgba(101,17,38,.18)}
+.event:last-child{border-bottom:1px solid rgba(101,17,38,.18)}
+.event h3{font-size:28px;color:var(--burgundy);margin:0 0 9px}
+.event .date{font:700 9px Arial,sans-serif;letter-spacing:1.3px}
+.event .times{font-size:17px;line-height:1.6;margin-top:12px}
+.event .loc{font:700 9px Arial,sans-serif;letter-spacing:.7px;line-height:1.6;color:#745357;margin-top:12px}
+.pin{color:var(--gold);font-size:16px}
+
+/* RSVP / FOOTER */
+.rsvp{background:#fff3e8}
+.rsvp-box{max-width:500px;margin:auto}
+.rsvp-box input,.rsvp-box textarea{
+ width:100%;border:1px solid #d8b9ad;background:#fffaf5;border-radius:10px;padding:14px;margin:5px 0;
+ font-size:16px;color:var(--ink);outline:none
+}
+.rsvp-box textarea{min-height:100px;resize:vertical}
+.rsvp-box button{width:100%;border:0;border-radius:10px;background:var(--burgundy);color:#fff;padding:14px;margin-top:5px;font:700 9px Arial,sans-serif;letter-spacing:1.5px}
+.success{display:none;color:var(--burgundy);font-size:16px;margin-top:14px}.success.show{display:block}
+.footer{padding:78px 25px 95px;text-align:center;background:linear-gradient(#efd0d5,#dcaeb8);position:relative}
+.footer .script{font-size:61px;color:var(--burgundy)}
+.footer p{font-size:15px;line-height:1.4}
+.map{
+ display:inline-block;margin-top:10px;padding:10px 16px;border:1px solid var(--gold);border-radius:22px;
+ color:var(--burgundy);font:700 8px Arial,sans-serif;letter-spacing:1px
+}
+@media(max-width:390px){
+ .family{font-size:16px}.family.small{font-size:14px}.request{font-size:14px}
+ .intro-names{font-size:51px}.intro-names .with{font-size:24px}
+ .hero h1{font-size:64px}.card-heading{font-size:21px}.card-names{font-size:49px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- EXACT INTRO STYLE: invitation card first, no ugly split-screen -->
+<section id="intro" class="screen">
+ <div class="intro-card" id="introCard">
+  <div class="frame"></div>
+  <div class="orn tl">❦</div><div class="orn tr">❦</div><div class="orn bl">❦</div><div class="orn br">❦</div>
+  <div class="ganesha">ॐ</div>
+  <div class="upper mantra">|| SHRI GANESHAYA NAMAH ||</div>
+  <div class="family">DADA-DADI SHRI RAMSWAROOP SHARMA<br>&amp; SMT. SHAKUNTALA DEVI</div>
+  <div class="parent-label">PARENTS</div>
+  <div class="family small">SHRI RAJESH SHARMA &amp; SMT. SUNITA SHARMA</div>
+  <div class="request">SOLICIT YOUR GRACIOUS PRESENCE<br>AT THE WEDDING CEREMONY OF THEIR SON</div>
+  <div class="intro-names script">AARAV <span class="with">with</span> ANANYA</div>
+  <button class="open-btn" id="openBtn">TAP TO OPEN INVITATION</button>
+ </div>
+</section>
+
+<main id="main">
+<button class="music" id="musicBtn" aria-label="Music">♪</button>
+<audio id="music" loop preload="none"><source src="wedding-music.mp3" type="audio/mpeg"></audio>
+
+<!-- CINEMATIC HERO + LIVE COUNTDOWN -->
+<section class="hero screen">
+ <div class="hero-inner">
+  <div class="upper">A WEDDING CELEBRATION</div>
+  <div class="gold" style="font-size:24px;margin:12px 0">✦</div>
+  <div class="upper">|| SHRI GANESHAYA NAMAH ||</div>
+  <h1 class="script">AARAV <small>with</small> ANANYA</h1>
+  <div class="hero-copy">We request the pleasure of your gracious presence<br>at their wedding celebration.</div>
+  <div class="count-title">COUNTING DOWN TO SHUBH VIVAH</div>
+  <div class="countdown" aria-label="Wedding countdown">
+   <div><strong id="days">0</strong><span>DAYS</span></div>
+   <div><strong id="hours">00</strong><span>HOURS</span></div>
+   <div><strong id="minutes">00</strong><span>MINUTES</span></div>
+   <div><strong id="seconds">00</strong><span>SECONDS</span></div>
+  </div>
+  <div class="count-date">TUESDAY · 7 DECEMBER 2027 · VIVAH 8 PM</div>
+  <div class="scroll-cue">SCROLL TO EXPLORE ↓</div>
+ </div>
+</section>
+
+<!-- FAST SCRATCH REVEAL -->
+<section class="section scratch-section" id="scratchSection">
+ <div class="upper" style="color:#8c6268">A LITTLE SURPRISE</div>
+ <h2 class="section-title script">Scratch to Reveal</h2>
+ <div class="rule"><span>❦</span></div>
+ <div class="scratch-wrap" id="scratchWrap">
+  <div class="heart-under"></div>
+  <div class="heart-content">
+   <div class="script">AARAV<br><span style="font-size:23px">with</span><br>ANANYA</div>
+   <div class="mini">SHUBH VIVAH · 7 DECEMBER 2027<br>VIVAH - 8 PM</div>
+  </div>
+  <canvas id="scratchCanvas" width="360" height="360"></canvas>
+ </div>
+ <div class="scratch-status" id="scratchStatus">Scratch the rose-gold heart to reveal</div>
+ <div class="scratch-hint">USE YOUR FINGER OR MOUSE</div>
+ <a href="#card" class="skip-scratch">SKIP SCRATCH → VIEW INVITATION</a>
+</section>
+
+<!-- COMPLETE MASTER CARD INFORMATION -->
+<section class="paper card-section section" id="card">
+ <div class="frame"></div><div class="orn tl">❦</div><div class="orn tr">❦</div><div class="orn bl">❦</div><div class="orn br">❦</div>
+ <div class="card-content">
+  <div class="card-ganesha">ॐ</div>
+  <div class="card-mantra">|| SHRI GANESHAYA NAMAH ||</div>
+  <div class="rule"><span>❦</span></div>
+  <h2 class="card-heading">DADA-DADI SHRI RAMSWAROOP SHARMA<br>&amp; SMT. SHAKUNTALA DEVI</h2>
+  <div class="card-label">PARENTS</div>
+  <div class="card-parents">SHRI RAJESH SHARMA &amp; SMT. SUNITA SHARMA</div>
+  <div class="card-request">SOLICIT YOUR GRACIOUS PRESENCE<br>AT THE WEDDING CEREMONY OF THEIR SON</div>
+  <div class="card-names">AARAV <span class="with">with</span> ANANYA</div>
+ </div>
+</section>
+
+<section class="section events" id="events">
+ <div class="upper" style="color:#8c6268">EVENTS &amp; DATES</div>
+ <h2 class="section-title script">The Celebrations</h2>
+ <div class="rule"><span>❦</span></div>
+
+ <article class="event">
+  <h3>PRE-WEDDING FUNCTIONS</h3>
+  <div class="date">MONDAY, 6 DECEMBER 2027</div>
+  <div class="times"><b>HALDI - 10 AM</b> &nbsp; | &nbsp; <b>MEHENDI - 1 PM</b> &nbsp; | &nbsp; <b>SANGEET - 7 PM</b></div>
+  <div class="loc"><span class="pin">⌖</span> LOCATION: JAIPUR</div>
+ </article>
+
+ <article class="event">
+  <h3>SHUBH VIVAH</h3>
+  <div class="date">TUESDAY, 7 DECEMBER 2027</div>
+  <div class="times"><b>BARAAT RECEPTION - 6 PM</b> &nbsp; | &nbsp; <b>VIVAH - 8 PM</b> &nbsp; | &nbsp; <b>VIDAAI - 11 PM</b></div>
+  <div class="loc"><span class="pin">⌖</span><br>HOTEL TAJ JAI MAHAL PALACE, JAIPUR</div>
+  <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hotel%20Taj%20Jai%20Mahal%20Palace%20Jaipur">VIEW ON MAP</a>
+ </article>
+
+ <article class="event">
+  <h3>GRAND RECEPTION</h3>
+  <div class="date">THURSDAY, 9 DECEMBER 2027</div>
+  <div class="times"><b>DOORS OPEN - 7 PM</b></div>
+  <div class="loc"><span class="pin">⌖</span><br>THE LEELA PALACE, NEW DELHI</div>
+  <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The%20Leela%20Palace%20New%20Delhi">VIEW ON MAP</a>
+ </article>
+</section>
+
+<section class="section rsvp">
+ <div class="rsvp-box">
+  <div class="upper">WITH BEST COMPLIMENTS FROM: ALL FAMILY &amp; FRIENDS</div>
+  <h2 class="section-title script">RSVP</h2>
+  <div class="rule"><span>❦</span></div>
+  <p style="font-size:16px;line-height:1.45">RAJESH SHARMA (+91-XXXXX-XXXXX)<br>SHAKUNTALA SHARMA (+91-XXXXX-XXXXX)</p>
+  <form id="rsvpForm">
+   <input id="guest" required placeholder="Your Name">
+   <input id="phone" placeholder="Phone Number">
+   <textarea id="wish" placeholder="Your wishes..."></textarea>
+   <button type="submit">SEND WISHES</button>
+  </form>
+  <div class="success" id="success"></div>
+ </div>
+</section>
+
+<footer class="footer">
+ <div class="upper">WITH LOVE &amp; BLESSINGS</div>
+ <div class="script">AARAV &amp; ANANYA</div>
+ <div class="rule"><span>❦</span></div>
+ <p>WITH BEST COMPLIMENTS FROM: ALL FAMILY &amp; FRIENDS</p>
+</footer>
+</main>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* Intro transition: the invitation itself becomes the website; no broken intermediate layout. */
+const intro=document.getElementById("intro");
+const introCard=document.getElementById("introCard");
+const main=document.getElementById("main");
+const openBtn=document.getElementById("openBtn");
+const music=document.getElementById("music");
+const musicBtn=document.getElementById("musicBtn");
+
+openBtn.addEventListener("click",function(){
+ introCard.classList.add("opening");
+ setTimeout(function(){
+  intro.style.display="none";
+  main.classList.add("show");
+  window.scrollTo(0,0);
+  music.play().then(function(){musicBtn.textContent="❚❚"}).catch(function(){});
+ },650);
+});
+
+/* Music button */
+musicBtn.addEventListener("click",function(){
+ if(music.paused){
+  music.play().then(function(){musicBtn.textContent="❚❚"}).catch(function(){
+   alert("Music file not found. Add wedding-music.mp3 beside index.html.");
+  });
+ }else{
+  music.pause();
+  musicBtn.textContent="♪";
+ }
+});
+
+/* Accurate live countdown to 7 Dec 2027, 8:00 PM IST */
+const weddingMs=Date.parse("2027-12-07T20:00:00+05:30");
+function tick(){
+ let diff=Math.max(0,weddingMs-Date.now());
+ const days=Math.floor(diff/86400000); diff%=86400000;
+ const hours=Math.floor(diff/3600000); diff%=3600000;
+ const minutes=Math.floor(diff/60000); diff%=60000;
+ const seconds=Math.floor(diff/1000);
+ document.getElementById("days").textContent=days;
+ document.getElementById("hours").textContent=String(hours).padStart(2,"0");
+ document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
+ document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
+}
+tick();
+setInterval(tick,1000);
+
+/* Lightweight scratch engine:
+   - Pointer Events work for finger + mouse.
+   - No getImageData inside pointermove.
+   - Coverage is checked only every ~350ms, preventing mobile lag. */
+const canvas=document.getElementById("scratchCanvas");
+const ctx=canvas.getContext("2d");
+const status=document.getElementById("scratchStatus");
+let drawing=false, finished=false, scratched=0, lastX=0,lastY=0,lastCheck=0;
+
+function paintFoil(){
+ const g=ctx.createLinearGradient(20,10,340,340);
+ g.addColorStop(0,"#e6bdc6");g.addColorStop(.28,"#c98196");
+ g.addColorStop(.6,"#a84c68");g.addColorStop(1,"#7c2945");
+ ctx.fillStyle=g;ctx.fillRect(0,0,360,360);
+ ctx.globalAlpha=.18;ctx.fillStyle="#fff";
+ for(let i=0;i<480;i++)ctx.fillRect(Math.random()*360,Math.random()*360,1,1);
+ ctx.globalAlpha=1;
+ ctx.fillStyle="#fff8f2";ctx.textAlign="center";
+ ctx.font="700 10px Arial";ctx.fillText("SCRATCH TO REVEAL",180,174);
+ ctx.font="26px Georgia";ctx.fillText("♥",180,208);
+}
+paintFoil();
+
+function point(e){
+ const r=canvas.getBoundingClientRect();
+ return {x:(e.clientX-r.left)*(360/r.width),y:(e.clientY-r.top)*(360/r.height)};
+}
+function erase(e){
+ const p=point(e);
+ ctx.globalCompositeOperation="destination-out";
+ ctx.beginPath();ctx.arc(p.x,p.y,25,0,Math.PI*2);ctx.fill();
+ if(lastX||lastY){
+  ctx.beginPath();ctx.moveTo(lastX,lastY);ctx.lineTo(p.x,p.y);
+  ctx.lineWidth=50;ctx.lineCap="round";ctx.stroke();
+ }
+ lastX=p.x;lastY=p.y;
+ scratched+=2400;
+ const now=performance.now();
+ if(now-lastCheck>350){
+  lastCheck=now;
+  /* Cheap approximation first; only a small sampled read is performed occasionally. */
+  if(scratched>22000) finishScratch();
+ }
+}
+canvas.addEventListener("pointerdown",function(e){
+ if(finished)return;
+ e.preventDefault();drawing=true;lastX=lastY=0;
+ canvas.setPointerCapture(e.pointerId);erase(e);
+});
+canvas.addEventListener("pointermove",function(e){
+ if(!drawing||finished)return;
+ e.preventDefault();erase(e);
+});
+canvas.addEventListener("pointerup",function(e){
+ drawing=false;lastX=lastY=0;
+ try{canvas.releasePointerCapture(e.pointerId)}catch(_){}
+});
+canvas.addEventListener("pointercancel",function(){drawing=false;lastX=lastY=0});
+
+function finishScratch(){
+ if(finished)return;
+ finished=true;
+ status.innerHTML="<b>♥ REVEALED — SHUBH VIVAH · 7 DECEMBER 2027 · VIVAH - 8 PM</b>";
+ canvas.style.transition="opacity .5s ease";
+ canvas.style.opacity="0";
+ setTimeout(function(){
+  canvas.remove();
+  document.getElementById("card").scrollIntoView({behavior:"smooth",block:"start"});
+ },550);
+}
+
+/* RSVP demo */
+document.getElementById("rsvpForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const name=document.getElementById("guest").value.trim()||"Guest";
+ const success=document.getElementById("success");
+ success.textContent="Thank you, "+name+"! Your wishes mean a lot to Aarav & Ananya. ♥";
+ success.classList.add("show");
+ this.reset();
+});
+})();
+</script>
+</body>
+</html>
